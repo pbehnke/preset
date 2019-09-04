@@ -1,0 +1,45 @@
+// messages
+
+.btn.btn-messages {
+    color: $messagesColor;
+}
+
+.badge-messages {
+    color: $messagesColor;
+}
+
+.text-messages {
+    color: $messagesColor;
+}
+
+.border-left-messages {
+    border-left: .25rem solid $messagesColor !important;
+}
+
+.topbar .dropdown-list .dropdown-header.dropdown-messages {
+    background-color: $messagesColor;
+    border-color: $messagesColor;
+}
+
+// alerts
+
+.btn.btn-alerts {
+    color: $alertsColor;
+}
+
+.badge-alerts {
+    color: $alertsColor;
+}
+
+.text-alerts {
+    color: $alertsColor;
+}
+
+.border-left-alerts {
+    border-left: .25rem solid $alertsColor !important;
+}
+
+.topbar .dropdown-list .dropdown-header.dropdown-alerts {
+    background-color: $alertsColor;
+    border-color: $alertsColor;
+}

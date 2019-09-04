@@ -1,0 +1,75 @@
+<div class="row projects-table" style="display: {{ cookies.projects.list == 'table' ? 'block' : 'none' }}">
+  <input id="txt-projects-count" type="hidden" value="{{projects.length}}">
+  <div class="container-fluid p-2 pb-0 m-1">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+      <div class="card-header p-0">
+        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm float-left m-2" data-toggle="modal" data-target="#model-project" data-action="add">
+          <i class="fas fa-plus fa-sm text-white-50"></i>
+          New Project
+        </a>
+        <h6 class="m-0 font-weight-bold text-primary float-right">
+          <a href="#" class="btn btn-default btn-projects-toggle" title="Toggle View">
+            <i class="fas fa-dice-four"></i>
+          </a>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="tbl-projects" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Title</th>
+                  <th>Description</th>
+                  <th>URL</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for row in projects %}
+                    <tr>
+                      <td class="pt-3">{{ row.name }}</td>
+                      <td><input type="text" class="form-control shadow-sm" value="{{ row.title }}"></td>
+                      <td><input type="text" class="form-control shadow-sm" value="{{ row.description }}"></td>
+                      <td class="pt-3">
+                        <a href="{{settings.host.protocol}}://{{row.url}}.{{settings.host.domain}}">
+                          <i class="fas fa-globe-europe fa-sm"></i>
+                          {{settings.host.protocol}}://{{row.url}}.{{settings.host.domain}}
+                        </a>
+                      </td>
+                      <td class="pt-3 pr-0">
+                        <a class="btn btn-default btn-sm p-1" href="/users/{{ auth.user.username }}/projects/{{row.name}}/editor" title="Content Editor">
+                          <i class="far fa-file-alt"></i>
+                        </a>
+                        <a class="btn btn-default btn-sm p-1" href="/users/{{ auth.user.username }}/projects/{{row.name}}/edit" title="Edit Project" data-toggle="modal" data-target="#model-project" data-action="edit" data-id="{{row.id}}">
+                          <i class="far fa-edit"></i>
+                        </a>
+                        <a class="btn btn-default btn-sm p-1" href="/users/{{auth.user.username}}/projects/{{row.name}}/" title="Publish">
+                          <i class="fas fa-upload"></i>
+                        </a>
+                        <a class="btn btn-default btn-sm p-1" href="{{settings.host.protocol}}://{{row.url}}.{{settings.host.domain}}" title="View">
+                          <i class="fas fa-globe-europe"></i>
+                        </a>
+                        {% if row.completion > 60 %}
+                          {% set badgeCompletion = 'success' %}
+                        {% endif %}
+                        {% if row.completion < 60 %}
+                          {% set badgeCompletion = 'warning' %}
+                        {% endif %}
+                        {% if row.completion < 30 %}
+                          {% set badgeCompletion = 'danger' %}
+                        {% endif %}
+                        <span class="badge badge-{{badgeCompletion}} badge-counter">
+                          {{row.completion}}
+                          <i class="fas fa-percent fa-xs"></i>
+                        </span>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+                <tfoot></tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>

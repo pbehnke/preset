@@ -1,0 +1,61 @@
+<!-- Sidebar -->
+
+{% if cookies.sidebar.toggled == 'true' %}
+  {% set navToggled = 'toggled' %}
+{% endif %}
+
+{% if auth.check() %}
+
+  <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion {{navToggled}}" id="accordionSidebar">
+
+    <li class="nav-item">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ path_for('home') }}">
+        <div class="sidebar-brand-icon rotate-n-15 pt-2">
+          <i class="fas fa-puzzle-piece rotate-60 shadow-sm"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Preset</div>
+      </a>
+    </li>
+
+    <li class="nav-item mt-5 pt-2 active">
+      <a class="nav-link" href="{{ path_for('home') }}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Dashboard</span></a>
+    </li>
+
+    <li class="nav-item"><hr class="sidebar-divider"></li>
+
+    {% include 'app/projects/nav.twig' %}
+
+    <li class="nav-item"><hr class="sidebar-divider"></li>
+
+    <li class="nav-item mb-4">
+      <a id="headingUtilities" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+        <i class="fas fa-fw fa-wrench"></i>
+        <span>Settings</span>
+      </a>
+      <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">
+            Settings
+            <i class="fas fa-fw fa-wrench pl-4"></i>
+          </h6>
+          <a class="collapse-item" href="/settings/links">
+            <i class="fa fa-network-wired pr-1"></i>
+            Links
+          </a>
+          <a class="collapse-item" href="/settings/configuration">
+            <i class="fas fa-cogs pr-1"></i>
+            Configuration
+          </a>
+        </div>
+      </div>
+    </li>
+
+    <div class="text-center d-none d-md-inline mt-5 pt-5">
+      <button class="rounded-circle border-0 mt-5" id="sidebarToggle"></button>
+    </div>
+
+  </ul>
+
+{% endif %}

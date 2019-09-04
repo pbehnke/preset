@@ -1,0 +1,87 @@
+<div class="modal fade" id="model-profile" tabindex="-1" role="dialog" aria-labelledby="projectModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Profile</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="/profile" data-href="/jobs/list">
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="card card-default">
+                <div class="card-header p-2">
+                  <h5 class="pt-2 mb-0">You</h5>
+                </div>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="txt-title">Username</label>
+                    <input type="text" id="txt-title" class="form-control" name="title" placeholder="Username" value="" readonly="readonly">
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="txt-fname">First Name</label>
+                        <input type="text" id="txt-fname" class="form-control" name="fname" placeholder="First Name" value="">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="txt-lname">Last Name</label>
+                        <input type="text" id="txt-lname" class="form-control" name="lname" placeholder="Last Name" value="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="txt-email">Email</label>
+                    <input type="text" id="txt-email" class="form-control" name="email" placeholder="Email" value="{{user.email}}">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="card card-default">
+                <div class="card-header p-2">
+                  <h5 class="pt-2 mb-0">Password</h5>
+                </div>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="txt-old-password">
+                      Old Password
+                    </label>
+                    <input type="text" id="txt-old-password" class="form-control" name="old_password" placeholder="old password">
+                  </div>
+                  <div class="form-group">
+                    <label for="txt-new-password">
+                      New Password
+                    </label>
+                    <input type="text" id="txt-new-password" class="form-control" name="new_password" placeholder="New Password">
+                  </div>
+                  <div class="form-group">
+                    <label for="txt-confirm-password">
+                      confirm password
+                    </label>
+                    <input type="text" id="txt-confirm-password" class="form-control" name="confirm_password" placeholder="Confirm Paassword">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            <i class="fa fa-times"></i>
+            Close
+        </button>
+        <button type="button" class="btn btn-primary">
+            <i class="far fa-save"></i>
+            Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

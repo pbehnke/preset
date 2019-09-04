@@ -1,0 +1,90 @@
+{% extends 'layout.twig' %}
+{% block body %}
+  <div class="container ml-5">
+    <div class="row ml-5 pl-4">
+      <div class="col-lg pl-3">
+        <div class="card o-hidden border-0 shadow-lg mt-3 mb-4">
+          <div class="card-body p-0">
+            <div class="row">
+              <!--bg-login-image -->
+              <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+              <div class="col-lg-6">
+                <div class="px-5 py-4 mb-1 mt-4">
+                  <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-4">{{trans('signin')}}</h1>
+                  </div>
+                  <form class="user" action="{{ path_for('login') }}" method="post">
+                    {{ csrf() }}
+                    <div class="form-group{% if has_error('auth') %} alert-danger {% endif %}">
+                      <input type="email" name="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                    </div>
+                    <div class="form-group {% if has_error('auth') %} alert-danger {% endif %}">
+                      <input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                    </div>
+                    <div class="container p-0">
+                      <div class="row">
+                        <div class="col-md-6 text-left pl-4">
+                          <a class="small" href="{{ path_for('forgot') }}">Forgot Password?</a>
+                        </div>
+                        <div class="col-md-6 text-right">
+                          <div class="form-group">
+                            <div class="custom-control custom-checkbox small">
+                              <input type="checkbox" class="custom-control-input" id="customCheck">
+                              <label class="custom-control-label" for="customCheck">Remember Me</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                      {{ trans('signin') }}
+                    </button>
+                    <hr>
+                    <div class="container p-0">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <a href="{{ path_for('forgot') }}" class="btn btn-google btn-user btn-block">
+                            <i class="fab fa-google fa-fw"></i>
+                            {{trans('signin')}}
+                            with Google
+                          </a>
+                        </div>
+                        <div class="col-md-6">
+                          <a href="{{ path_for('forgot') }}" class="btn btn-facebook btn-user btn-block">
+                            <i class="fab fa-facebook-f fa-fw"></i>
+                            {{trans('signin')}}
+                            with Facebook
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                  <hr>
+                  <div class="container p-0">
+                    <div class="row m-2">
+                      <div class="col-lg text-right pt-1">
+                        <a class="small" href="{{ path_for('register') }}">
+                          <i class="fas fa-user-plus pr-2"></i>
+                          {{trans('create') }}
+                          {{trans('account')}}
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  {% if has_errors() %}
+                    <div class="alert-danger">
+                      {% for error in errors('auth') %}
+                        <p class="p-2">{{ error }}</p>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% set columns = 2 %}
+
+
+<div class="row projects-cards" style="display: {{ cookies.projects.list == 'cards' ? 'block' : 'none' }}">
+  <div class="container-fluid p-2 pb-0">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-0">
+      <div class="card-header p-0">
+        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm float-left m-2" data-toggle="modal" data-target="#model-project" data-action="add">
+          <i class="fas fa-plus fa-sm text-white-50"></i>
+          New Project
+        </a>
+        <h6 class="m-0 font-weight-bold text-primary float-right">
+          <a href="#" class="btn btn-default btn-projects-toggle" title="Toggle View">
+            <i class="fas fa-list"></i>
+          </a>
+        </div>
+        <div class="card-body">
+          {% for row in projects %}
+            <div class="col-lg-6">
+              <div class="card shadow mb-0">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">
+                    <i class="fas fa-project-diagram"></i>
+                    {{row.title}}
+                  </h6>
+                  <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">
+                        <i class="fas fa-project-diagram pr-1"></i>
+                        Project
+                      </div>
+                      <a class="dropdown-item" href="/users/{{ auth.user.username }}/projects/{{row.name}}/editor">
+                        <i class="far fa-file-alt pr-2"></i>
+                        Content Editor
+                      </a>
+                      <a class="dropdown-item" href="/users/{{ auth.user.username }}/projects/{{row.name}}/edit" data-toggle="modal" data-target="#model-project" data-action="edit" data-id="{{row.id}}">
+                        <i class="far fa-edit pr-1"></i>
+                        Edit Project
+                      </a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item publish" href="/users/{{auth.user.username}}/projects/{{row.name}}/">
+                        <i class="fas fa-upload pr-2"></i>
+                        Publish
+                      </a>
+                      <a class="dropdown-item" href="#">
+                        <i class="fas fa-globe-europe pr-2"></i>
+                        View Site
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">{{row.title}}</h5>
+                  <p class="card-text mt-2">{{row.description}}</p>
+                  <h6 class="card-subtitle mt-4 text-muted float-left">
+                    <a href="{{settings.host.protocol}}://{{row.url}}.{{settings.host.domain}}">
+                      <i class="fas fa-globe-europe pr-1"></i>
+                      {{row.url}}.{{settings.host.domain}}
+                    </a>
+                  </h6>
+                  <h6 class="card-subtitle mt-4 text-muted float-right">
+                    <a class="publish" href="/users/{{auth.user.username}}/projects/{{row.name}}/">
+                      <i class="fas fa-upload pr-2"></i>
+                      Publish
+                    </a>
+                  </h6>
+                </div>
+              </div>
+            </div>
+            {% if loop.index % columns %}
+            </div>
+            <div class="row">
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}

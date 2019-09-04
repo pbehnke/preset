@@ -1,0 +1,11 @@
+{% extends 'layout.twig' %}
+
+{% block stylesheets %}
+
+  {{ parent() }}
+
+{% endblock %}
+
+{% block body %}
+  <iframe src="/editor/?user-id={{ auth.user.id }}&project={{ project.name }}" style="width:100%; border: none; height: 110vh"></iframe>
+{% endblock %}

@@ -1,0 +1,13 @@
+
+{% for row in alerts %}
+  <a class="dropdown-item d-flex align-items-center" href="#" data-toggle="modal" data-target="#model-message">
+    <div class="dropdown-list-image mr-3">
+      <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="Profile Picture">
+      <div class="status-indicator bg-success"></div>
+    </div>
+    <div class="font-weight-bold">
+      <div class="text-truncate">{{row.description}}</div>
+      <div class="small text-gray-500">{{row.user_id}} · {{row.created_at}}</div>
+    </div>
+  </a>
+{% endfor %}

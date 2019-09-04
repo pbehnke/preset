@@ -1,0 +1,115 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+<div class="p-4">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800"></h1>
+  </div>
+  {{sidebar}}
+  <!-- Content Row -->
+  <div class="row">
+
+    <!-- Visits
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-success shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Visits (Total)</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">215k</div>
+            </div>
+            <div class="col-auto">
+              <i class="far fa-eye fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    -->
+    <div class="col-xl-3 col-md-6 mb-4"></div>
+
+    <!-- Projects -->
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Projects Completion</div>
+              <div class="row no-gutters align-items-center">
+                <div class="col-auto">
+                  {% set sum = 0 %}
+                  {% for row in projects %}
+                     {% set sum = sum + row.completion %}
+                  {% endfor %}
+                  {% if projects.length > 1 %}
+                    {% set sum = (sum / projects.length) %}
+                  {% endif %}
+                  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-600">
+                    {{ sum }}
+                    <i class="fas fa-percent fa-xs"></i>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="progress progress-sm mr-2">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: {{ sum }}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-project-diagram fa-2x float-left text-primary"></i>
+              <span class="badge badge-primary float-right">{{projects|length}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Alerts -->
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-alerts shadow h-100 py-2 alerts">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-uppercase mb-1" >
+                Alerts
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-bell fa-2x text-alerts"></i>
+              <span class="badge badge-danger badge-counter float-right " >3+</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Messages -->
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-messages shadow h-100 py-2 messages">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-messages text-uppercase mb-1">
+                  Messages
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-envelope fa-2x text-messages"></i>
+              <span class="badge badge-danger badge-counter float-right">7</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Projects -->
+  {% include 'app/projects/cards.twig' %}
+  {% include 'app/projects/table.twig' %}
+
+</div>
+
+
+{% endblock %}

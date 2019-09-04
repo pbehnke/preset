@@ -1,0 +1,37 @@
+<li class="nav-item">
+  <a id="projects" name="projects" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProjects" aria-expanded="true" aria-controls="collapsePages">
+    <i class="fas fa-project-diagram"></i>
+    <span>Projects</span>
+  </a>
+  <div id="collapseProjects" class="collapse collapse-item" aria-labelledby="projects" data-parent="#projects">
+    <div class="bg-white py-2 collapse-inner rounded">
+      {% for row in projects %}
+        <a id="project-{{ row.id }}" class="nav-link collapsed nav-second" data-toggle="collapse" data-target="#collapseProject-{{ row.id }}" aria-expanded="true" aria-controls="collapseUtilities">
+          <span>{{ row.title }}</span>
+          <i class="fas fa-fw fa-project-diagram float-right mr-4 pt-1"></i>
+        </a>
+        <div id="collapseProject-{{ row.id }}" class="collapse" aria-labelledby="collapseProject-{{ row.id }}" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="/users/{{ auth.user.username }}/projects/{{ row.name }}/editor">
+              <i class="far fa-file-alt pr-2"></i>
+              Content
+            </a>
+            <a class="collapse-item" href="#" data-toggle="modal" data-target="#model-project" data-action="edit" data-href="/projects/{{row.name}}/edit">
+              <i class="far fa-edit pr-1"></i>
+              Edit
+            </a>
+            <a class="collapse-item publish" href="/users/{{ auth.user.username }}/projects/{{ row.name }}/">
+              <i class="fas fa-upload pr-2"></i>
+              Publish
+            </a>
+            <a class="collapse-item" href="{{ settings.host.protocol }}://{{ row.url }}.{{ settings.host.domain }}">
+              <i class="fas fa-globe-europe pr-2"></i>
+              View
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+      <!--<div class="collapse-divider"></div>-->
+    </div>
+  </div>
+</li>

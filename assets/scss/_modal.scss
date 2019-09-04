@@ -1,0 +1,20 @@
+.modal {
+
+    .modal-header {
+        background-color:: $gray-200;
+    }
+
+    .modal-content {
+      border-color: $gray-200;
+    }
+
+    .modal-content .status-indicator {
+      float: right;
+      margin: -8px 12px 5px 0;
+    }
+
+    .modal-footer {
+      background-color:: $gray-200;
+    }
+
+}

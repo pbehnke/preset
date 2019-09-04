@@ -1,0 +1,62 @@
+{% import 'app/macro/form.twig' as form %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Preset: Website Builder">
+    <meta name="author" content="Webanet.com.au">
+    <title>Preset: Webdev Dashboard</title>
+    {% block stylesheets %}
+      <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+      <link href="/assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+      <link href="/assets/css/preset.min.css" rel="stylesheet">
+    {% endblock %}
+    <link rel="icon" href="/assets/img/favicon.png">
+  </head>
+  {% if sidebar == 'true' %}
+  {% set bodyToggled = 'sidebar-toggled' %}
+  {% endif %}
+  <body id="page-top" class="{{ path }} {{ toggledClass }}">
+    <div class="wrapper">
+      {% block navbar %}
+        {% include 'app/_navbar.twig' %}
+      {% endblock %}
+      <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+          {% block topbar %}
+            {% include 'app/_topbar.twig' %}
+          {% endblock %}
+          <div class="container-fluid p-0">
+            {% block body %}{% endblock %}
+          </div>
+        </div>
+        {% if auth.check() %}
+          {% include 'auth/profile.twig' %}
+          {% include 'auth/message.twig' %}
+          {% include 'auth/alert.twig' %}
+        {% endif %}
+        <footer class="sticky-footer">
+          <div class="container p-0">
+            {% block flash %}
+              {% include 'app/_flash.twig' %}
+            {% endblock %}
+          </div>
+          {{settings.version}}
+        </footer>
+      </div>
+      {% include 'app/projects/project.twig' %}
+    </div>
+    {% block javascript %}
+      <script src="/assets/vendor/popper/popper.min.js"></script>
+      <script src="/assets/vendor/jquery/jquery.min.js"></script>
+      <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <script src="/assets/vendor/js-cookie/js.cookie.min.js"></script>
+      <script src="/assets/vendor/datatables/jquery.dataTables.min.js"></script>
+      <script src="/assets/vendor/vue/vue.min.js"></script>
+      <script src="/assets/js/preset.min.js"></script>
+      <script src="/assets/js/preset.js"></script>
+    {% endblock %}
+  </body>
+</html>
