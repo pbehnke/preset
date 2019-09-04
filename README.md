@@ -10,4 +10,4 @@ Very much under developement.
 ![Dashboard Screenshot](https://raw.githubusercontent.com/webanet-australia/preset/master/screenshot-dashboard.jpg)
 
 
-![Editor Screenshot(https://raw.githubusercontent.com/webanet-australia/preset/master/screenshot-editor.jpg)
+![Editor Screenshot](https://raw.githubusercontent.com/webanet-australia/preset/master/screenshot-editor.jpg)
